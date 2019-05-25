@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "concurrently \"nodemon server.js\" \"webpack -w\" "
+    "start": "node ./bin/www"
   },
   "keywords": [],
   "author": "andres vicente caballero cantillo",
