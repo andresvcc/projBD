@@ -8,7 +8,7 @@
     "dev": "concurrently \"nodemon app.js\" \"webpack -w\" "
   },
   "keywords": [],
-  "author": "",
+  "author": "andres vicente caballero cantillo",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.18.0",
