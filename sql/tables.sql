@@ -1,4 +1,8 @@
 
+/*
+ce fichie n'a aucune utilité dans le code, je l'utilise uniquement pour faire des test
+*/
+
 use lrF7zYviuF;
 DROP DATABASE lrF7zYviuF;
 CREATE DATABASE lrF7zYviuF;

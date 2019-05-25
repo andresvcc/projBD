@@ -1,3 +1,8 @@
+
+/*
+ce fichie n'a aucune utilité dans le code, je l'utilise uniquement pour faire des test
+*/
+
 /*ADMIN*/
 
 /* ajouter un nouveau film */
