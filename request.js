@@ -74,7 +74,8 @@ module.exports = Object.freeze({
 /***USER QUERYS***/
 
     LIST_FILM:()=>{
-        return `SELECT *,((escenario + bande_sonore + effets_speciaux + histoire + originalite)/5) AS score
+        return `SELECT *,((escenario + bande_sonore + effets_speciaux + histoire + originalite)/5) AS score,
+                        (SELECT lien FROM photos WHERE photos.id_film = evalTotal.id_film ORDER BY id_photo LIMIT 1) AS lien
                 FROM(
                     SELECT  films.*, 
                             AVG(escenario) AS escenario, 
