@@ -9,11 +9,11 @@ const express = require('express');
 const sql = require('./mysqlConnection');
 const upload = require('./upload')
 const app = express();
-
+var cors = require('cors');
 
 app.use(express.static(__dirname + '/public'));
 app.use('/Photo', express.static('public/images')); 
-
+app.use(cors())
 
 upload.upload(app)
 
