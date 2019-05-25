@@ -11258,31 +11258,30 @@ var List = function (_Component) {
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = List.__proto__ || Object.getPrototypeOf(List)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
             values: []
+        }, _this.update = function () {
+            _axios2.default.post('/listFilm').then(function (res) {
+                var values = res.data.results;
+                console.log(values) / _this.setState({ values: values });
+            });
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
     _createClass(List, [{
         key: 'componentWillMount',
         value: function componentWillMount() {
-            update();
-        }
-    }, {
-        key: 'update',
-        value: function update() {
-            var _this2 = this;
-
-            _axios2.default.post('/listFilm').then(function (res) {
-                var values = res.data.results;
-                _this2.setState({ values: values });
-            });
+            this.update();
         }
     }, {
         key: 'render',
+
+
+        //
+
         value: function render() {
             return _react2.default.createElement(
                 'div',
                 null,
-                _react2.default.createElement(_noms2.default, { values: this.state.users })
+                _react2.default.createElement(_noms2.default, { values: this.state.values })
             );
         }
     }]);
@@ -23014,7 +23013,7 @@ module.exports = ReactMount.renderSubtreeIntoContainer;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.4
+/* WEBPACK VAR INJECTION */(function(process) {/** @license React v16.8.6
  * react-is.development.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
@@ -23249,7 +23248,7 @@ exports.isSuspense = isSuspense;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/** @license React v16.8.4
+/** @license React v16.8.6
  * react-is.production.min.js
  *
  * Copyright (c) Facebook, Inc. and its affiliates.
