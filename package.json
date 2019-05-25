@@ -17,8 +17,7 @@
     "express": "^4.15.2",
     "mysql": "^2.16.0",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4",
-    "superagent": "^3.5.2"
+    "react-dom": "^15.5.4"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
