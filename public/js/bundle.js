@@ -10326,7 +10326,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'h1',
           null,
-          'Proj base des donn\xE9s test 3'
+          'Proj base des donn\xE9s test 4'
         ),
         _react2.default.createElement(_list2.default, null)
       );
@@ -11261,7 +11261,8 @@ var List = function (_Component) {
         }, _this.update = function () {
             _axios2.default.post('/listFilm').then(function (res) {
                 var values = res.data.results;
-                console.log(values) / _this.setState({ values: values });
+                console.log(values);
+                _this.setState({ values: values });
             });
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
@@ -11273,10 +11274,6 @@ var List = function (_Component) {
         }
     }, {
         key: 'render',
-
-
-        //
-
         value: function render() {
             return _react2.default.createElement(
                 'div',
