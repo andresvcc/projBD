@@ -7,10 +7,16 @@
 **********************************************************/
 const express = require('express');
 const sql = require('./mysqlConnection');
+const upload = require('./upload')
 const app = express();
 
 
 app.use(express.static(__dirname + '/public'));
+app.use('/Photo', express.static('public/images')); 
+
+
+upload.upload(app)
+
 
 sql.mysqlConnection(app,(request, con)=>{
 
