@@ -9665,7 +9665,7 @@ var App = function (_Component) {
         _react2.default.createElement(
           'h1',
           null,
-          'Mi Aplicaci\xF3n Modificada'
+          'Proj base des donn\xE9s test 2'
         ),
         _react2.default.createElement(_list2.default, null)
       );
