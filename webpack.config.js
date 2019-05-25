@@ -1,3 +1,5 @@
+
+//configurations d'affichage pour l'interface visuele, afin de faire le render chez le client
 module.exports = {
     entry: './src/index.jsx',
     output: {
