@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "concurrently \"node ./bin/www\" \"webpack -w\" ",
     "dev": "concurrently \"nodemon ./bin/www\" \"webpack -w\" "
   },
   "keywords": [],
