@@ -19,7 +19,7 @@ export default class List extends Component {
         .then(res => {
             const values = res.data.results;
             console.log(values)
-           /this.setState({ values: values});
+            this.setState({ values: values});
         })
     }
 
