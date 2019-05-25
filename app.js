@@ -18,7 +18,6 @@ sql.mysqlConnection(app,(request, con)=>{
     return Object.keys(req.body).length === 0 ? true : false
   }
 
-
   /*-------------------------------------------
   |                Partie ADMIN               |
   -------------------------------------------*/
