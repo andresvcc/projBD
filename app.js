@@ -1,3 +1,10 @@
+/********************************************************
+    App
+*********************************************************
+    Andres Vicente Caballero Cantillo
+    Projet final bases des données
+    recommendation	des films
+**********************************************************/
 const express = require('express');
 const sql = require('./mysqlConnection');
 const app = express();
