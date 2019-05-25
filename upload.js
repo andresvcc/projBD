@@ -25,7 +25,7 @@ const upload = (app)=> {
     })
 
     var upload = multer({ storage: storage }).array('file')
-
+ 
     /*---------------------
     |      SERVICES       |
     ---------------------*/
