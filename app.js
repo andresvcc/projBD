@@ -7,7 +7,7 @@ app.use(express.static(__dirname + '/public'));
 
 sql.mysqlConnection(app,(request, con)=>{
 
-  // si apres une requete, mysql renvoie error, juste envoier un message d'error, sino continuer avec le callback next
+  // si apres une requete, mysql renvoie error, juste envoier un message d'error, sino continuer avec le callback next 
   let mysqlQuery = (res, query, next)=>{
     con.query(query, (err, results) =>{
       err ? res.json({err:{ errno:err.errno, code:err.code, sqlMessage:err.sqlMessage}}) : next(results)
