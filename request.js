@@ -1,4 +1,4 @@
-//ce module contiens toutes les requetes SQL, ceci a fin de simplifier la lecture du code.
+//ce module contiens toutes les requetes SQL, ceci a fin de simplifier la lecture du code. 
 
 module.exports = Object.freeze({
 
