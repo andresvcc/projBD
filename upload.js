@@ -46,7 +46,7 @@ const upload = (app)=> {
                 return res.status(500).json(err)
                 // An unknown error occurred when uploading.
             }
-            return res.status(200).send(req.files)
+            return res.status(200).json({filename: req.files[0].filename})
             // Everything went fine.
         })
     });    
