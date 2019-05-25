@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import request from 'superagent';
+import axios from 'axios';
 import Noms from './noms.jsx';
 
 export default class List extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            users: []
-
-        }
+    state = {
+        values: []
     }
 
     componentWillMount() {
-        request
-            .post('https://projbd.herokuapp.com/listFilm')
-            .end((err, res) => {
-                const users = JSON.parse(res.text).results;
-                this.setState({
-                    users: users
-                });
-            });
+        update()
     }
+
+
+    update(){
+        axios.post('/listFilm')
+        .then(res => {
+            const values = res.data.results;
+            this.setState({ values: values});
+        })
+    }
+
 
     render() {
         return (
