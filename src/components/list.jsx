@@ -3,16 +3,13 @@ import axios from 'axios';
 import Noms from './noms.jsx';
 
 export default class List extends Component {
-    
     state = {
         values: []
     }
     
-
     componentWillMount() {
         this.update()
     }
-
 
     update = ()=>{
         axios.post('/listFilm')
@@ -23,15 +20,10 @@ export default class List extends Component {
         })
     }
 
-    //
-
     render() {
         return (
-            <div>
-
-                
+            <div>                
                 <Noms values={this.state.values}></Noms>
-
             </div>
         )
     }
