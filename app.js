@@ -155,10 +155,10 @@ sql.mysqlConnection(app,(request, con)=>{
     });
   });
 
+  console.log('server ON')
+
+
 })
 
-app.get('/', (req, res) => {
-  res.sed('hello')
-});
 
 module.exports = app;
