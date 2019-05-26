@@ -101,6 +101,18 @@ module.exports = Object.freeze({
                 WHERE films_categories.id_categorie = categories.id_categorie
                 AND films_categories.id_film = ${data.id_film}`
     },
+    LIST_DIRECTEUR_FILM:(data)=>{
+        return `SELECT directeurs.* 
+                FROM directeurs_films, directeurs
+                WHERE directeurs_films.id_directeur  = directeurs.id_directeur 
+                AND directeurs_films.id_film = ${data.id_film}`
+    },
+    LIST_PHOTO_FILM:(data)=>{
+        return `SELECT photos.*
+                FROM photos, films
+                WHERE photos.id_film  = films.id_film 
+                AND films.id_film = ${data.id_film}`
+    },
     OPINIOS_FILM:(data)=>{
         return `SELECT  evaluations.*,
                         ((escenario + bande_sonore + effets_speciaux + histoire + originalite) / 5) AS score
