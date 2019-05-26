@@ -215,6 +215,14 @@ app.use(bodyParser.urlencoded({extended: true}))
     });
   });
 
+  // evaluer un filmn
+  app.post('/evaluer', (req, res) => {
+    let sqlQuery = isVide(req) ? '' :request.EVALUER(req.body)
+    mysqlQuery(res, sqlQuery, (results)=>{
+      res.json({results:results});
+    });
+  });
+
   let refres=()=>{
     con.query('SELECT NOW()AS TIME;', (err, resultat) => {
       err ? console.log(err) : console.log('conexion cls', resultat)

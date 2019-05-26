@@ -236,5 +236,18 @@ module.exports = Object.freeze({
                 ) AS total
                 GROUP BY id_directeur, directeur_nom, pay_origine, date_naissance, description
                 ORDER BY score DESC`
+    },
+    EVALUER:(data)=>{
+        return `INSERT INTO evaluations (id_film, opinion, escenario, bande_sonore, 
+                                        effets_speciaux, histoire, originalite )
+                VALUES (
+                    ${data.id_film},
+                    '${data.opinion}',
+                    ${data.escenario},
+                    ${data.bande_sonore},
+                    ${data.effets_speciaux},
+                    ${data.histoire},
+                    ${data.originalite}
+                )`
     }
 })
