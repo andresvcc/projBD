@@ -6,10 +6,13 @@
     recommendation	des films
 **********************************************************/
 const express = require('express');
-const sql = require('./mysqlConnection');
 const upload = require('./upload')
 const app = express();
 var cors = require('cors');
+const mysql = require('mysql')
+const bodyParser = require('body-parser')
+const request = require('./request')
+var gutil = require('gulp-util');
 
 app.use(express.static(__dirname + '/public'));
 app.use('/Photo', express.static('public/images')); 
@@ -17,8 +20,21 @@ app.use(cors())
 
 upload.upload(app)
 
+let con = mysql.createConnection({
+  host: "remotemysql.com",
+  user: "lrF7zYviuF",
+  password: "jDNd9e3VtF",
+  database: "lrF7zYviuF"
+});
 
-sql.mysqlConnection(app,(request, con)=>{
+con.connect((err)=>{ 
+  err ? console.log(gutil.colors.red(`problème de connection avec la base des données`)): 
+          console.log(gutil.colors.magenta(`Connecté à la base des données`));
+});
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}))
+
 
   // si apres une requete, mysql renvoie error, juste envoier un message d'error, sino continuer avec le callback next 
   let mysqlQuery = (res, query, next)=>{
@@ -199,10 +215,12 @@ sql.mysqlConnection(app,(request, con)=>{
     });
   });
 
-  console.log('server ON')
+  let refres=()=>{
+    con.query('SELECT NOW()AS TIME;', (err, resultat) => {
+      err ? console.log(err) : console.log('conexion cls', resultat)
+    })
+  }
 
-
-})
-
+  setInterval(refres,30000)
 
 module.exports = app;
