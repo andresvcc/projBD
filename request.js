@@ -113,6 +113,12 @@ module.exports = Object.freeze({
                 WHERE photos.id_film  = films.id_film 
                 AND films.id_film = ${data.id_film}`
     },
+    LIST_ARTISTE_FILM:(data)=>{
+        return `SELECT artistes.* 
+                FROM artistes_films, artistes
+                WHERE artistes_films.id_artiste = artistes.id_artiste
+                AND artistes_films.id_film =${data.id_film}`
+    },
     OPINIOS_FILM:(data)=>{
         return `SELECT  evaluations.*,
                         ((escenario + bande_sonore + effets_speciaux + histoire + originalite) / 5) AS score

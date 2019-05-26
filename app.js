@@ -135,13 +135,29 @@ sql.mysqlConnection(app,(request, con)=>{
     });
   });
 
-    // Voir liste des des categories d'un film (le client doit fournir le id_film)
-    app.post('/listeDirecteursFilm', (req, res) => {
-      let sqlQuery = isVide(req) ? '' :request.LIST_DIRECTEUR_FILM(req.body)
-      mysqlQuery(res, sqlQuery, (results)=>{
-        res.json({results:results});
-      });
+  // Voir liste des des categories d'un film (le client doit fournir le id_film)
+  app.post('/listeDirecteursFilm', (req, res) => {
+    let sqlQuery = isVide(req) ? '' :request.LIST_DIRECTEUR_FILM(req.body)
+    mysqlQuery(res, sqlQuery, (results)=>{
+      res.json({results:results});
     });
+  });
+
+  // Voir liste des des categories d'un film (le client doit fournir le id_film)
+  app.post('/listeArtistesFilm', (req, res) => {
+    let sqlQuery = isVide(req) ? '' :request.LIST_ARTISTE_FILM(req.body)
+    mysqlQuery(res, sqlQuery, (results)=>{
+      res.json({results:results});
+    });
+  });
+
+  // Voir liste des des categories d'un film (le client doit fournir le id_film)
+  app.post('/listePhotosFilm', (req, res) => {
+    let sqlQuery = isVide(req) ? '' :request.LIST_PHOTO_FILM(req.body)
+    mysqlQuery(res, sqlQuery, (results)=>{
+      res.json({results:results});
+    });
+  });
 
   // lister les directeurs avec leurs moyennes selon l'ensemble total des evaluations reçu par leurs films
   app.post('/listDirecteur', (req, res) => {
