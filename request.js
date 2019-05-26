@@ -95,6 +95,12 @@ module.exports = Object.freeze({
                 FROM categories  
                 ORDER BY categorie_nom`
     },
+    LIST_CATEGORIE_FILM:(data)=>{
+        return `SELECT categories.* 
+                FROM films_categories, categories
+                WHERE films_categories.id_categorie = categories.id_categorie
+                AND films_categories.id_film = ${data.id_film}`
+    },
     OPINIOS_FILM:(data)=>{
         return `SELECT  evaluations.*,
                         ((escenario + bande_sonore + effets_speciaux + histoire + originalite) / 5) AS score
