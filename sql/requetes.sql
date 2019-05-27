@@ -282,3 +282,19 @@ FROM(
 ORDER BY score DESC
 
 SELECT * FROM photos WHERE id_film = 1 ORDER BY id_photo LIMIT 1
+
+SELECT *,((escenario + bande_sonore + effets_speciaux + histoire + originalite)/5) AS score,
+                        (SELECT lien FROM photos WHERE photos.id_film = evalTotal.id_film ORDER BY id_photo LIMIT 1) AS lien
+                FROM(
+                    SELECT  films.*, 
+                            AVG(escenario) AS escenario, 
+                            AVG(bande_sonore) AS bande_sonore, 
+                            AVG(effets_speciaux) AS effets_speciaux, 
+                            AVG(histoire) AS histoire, 
+                            AVG(originalite) AS originalite, 
+                            COUNT(films.id_film) AS nb_evaluations 
+                    FROM evaluations, films
+                    WHERE evaluations.id_film  = films.id_film 
+                    GROUP BY films.id_film
+                ) AS evalTotal
+                ORDER BY id_film
