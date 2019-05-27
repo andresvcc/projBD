@@ -2,10 +2,9 @@
 
 Server
 
-start : 
-    npm install
-    npm start
+Install: npm install
 
+Start : npm start
 
 Demo : https://projbd.herokuapp.com 
 
