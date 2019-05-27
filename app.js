@@ -229,6 +229,6 @@ app.use(bodyParser.urlencoded({extended: true}))
     })
   }
 
-  setInterval(refres,60000)
+  setInterval(refres,60000 * 4)
 
 module.exports = app;
