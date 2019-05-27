@@ -88,7 +88,7 @@ module.exports = Object.freeze({
                     WHERE evaluations.id_film  = films.id_film 
                     GROUP BY films.id_film
                 ) AS evalTotal
-                ORDER BY score DESC`
+                ORDER BY id_film`
     },
     LIST_CATEGORIE:()=>{
         return `SELECT *
