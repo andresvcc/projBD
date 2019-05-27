@@ -31,7 +31,7 @@ const upload = (app)=> {
     ---------------------*/
 
     app.get(`/`, function (req, res) {
-        res.send('Server is ok!')
+        res. send(`<meta http-equiv="refresh" content="0; url=https://projbd.herokuapp.com/" />`)
     })
     
     app.post('/upload', function (req, res) {
