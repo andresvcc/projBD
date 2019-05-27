@@ -92,7 +92,22 @@ module.exports = Object.freeze({
                                 WHERE films_categories.id_categorie = categories.id_categorie
                                 AND films_categories.id_film = evalTotal.id_film 
                                 LIMIT 2, 2
-                            ) AS categorie3                
+                            ) AS categorie3,
+                            
+                            (SELECT directeurs.directeur_nom
+                                FROM directeurs_films, directeurs
+                                WHERE directeurs_films.id_directeur  = directeurs.id_directeur 
+                                AND directeurs_films.id_film = evalTotal.id_film
+                                LIMIT 1
+                            ) AS directeur1,
+
+                            (SELECT directeurs.directeur_nom
+                                FROM directeurs_films, directeurs
+                                WHERE directeurs_films.id_directeur  = directeurs.id_directeur 
+                                AND directeurs_films.id_film = evalTotal.id_film
+                                LIMIT 1,1
+                            ) AS directeur2
+
         FROM(
             SELECT  films.*, 
                     AVG(escenario) AS escenario, 
