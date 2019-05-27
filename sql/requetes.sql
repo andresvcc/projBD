@@ -25,7 +25,7 @@ VALUES (
 /*associer une categorie a un film*/
 REPLACE INTO films_categories(id_categorie, id_film)
 VALUES (
-    (SELECT id_categorie FROM categories WHERE categorie_nom = 'nom categorie 1'),
+    (SELECT id_categorie FROM categories WHERE categorie_nom = 'nom categorie 3'),
     1
 )
 
@@ -301,17 +301,22 @@ SELECT *,((escenario + bande_sonore + effets_speciaux + histoire + originalite)/
 
 
 SELECT *,((escenario + bande_sonore + effets_speciaux + histoire + originalite)/5) AS score,
-        (SELECT lien FROM photos WHERE photos.id_film = evalTotal.id_film ORDER BY id_photo LIMIT 1) AS lien
-        (ELECT categories.categorie_nom FROM films_categories, categories 
+        (SELECT lien FROM photos WHERE photos.id_film = evalTotal.id_film ORDER BY id_photo LIMIT 1) AS lien,
+        (SELECT categories.categorie_nom FROM films_categories, categories 
             WHERE films_categories.id_categorie = categories.id_categorie
             AND films_categories.id_film = evalTotal.id_film 
             LIMIT 1
         ) AS categorie1,
-        (ELECT categories.categorie_nom FROM films_categories, categories 
+        (SELECT categories.categorie_nom FROM films_categories, categories 
+            WHERE films_categories.id_categorie = categories.id_categorie
+            AND films_categories.id_film = evalTotal.id_film  
+            LIMIT 1, 1
+        ) AS categorie2,
+        (SELECT categories.categorie_nom FROM films_categories, categories 
             WHERE films_categories.id_categorie = categories.id_categorie
             AND films_categories.id_film = evalTotal.id_film 
-            LIMIT 1
-        ) AS categorie2
+            LIMIT 2, 2
+        ) AS categorie3                
 FROM(
     SELECT  films.*, 
             AVG(escenario) AS escenario, 
