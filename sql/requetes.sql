@@ -267,73 +267,6 @@ LIMIT 5
 
 
 SELECT *,((escenario + bande_sonore + effets_speciaux + histoire + originalite)/5) AS score,
-        (SELECT lien FROM photos WHERE photos.id_film = evalTotal.id_film ORDER BY id_photo LIMIT 1) AS lien
-FROM(
-    SELECT  films.*, 
-            AVG(escenario) AS escenario, 
-            AVG(bande_sonore) AS bande_sonore, 
-            AVG(effets_speciaux) AS effets_speciaux, 
-            AVG(histoire) AS histoire, 
-            AVG(originalite) AS originalite, 
-            COUNT(films.id_film) AS nb_evaluations 
-    FROM evaluations, films
-    WHERE evaluations.id_film  = films.id_film 
-    GROUP BY films.id_film
-) AS evalTotal
-ORDER BY score DESC
-
-SELECT * FROM photos WHERE id_film = 1 ORDER BY id_photo LIMIT 1
-
-SELECT *,((escenario + bande_sonore + effets_speciaux + histoire + originalite)/5) AS score,
-                        (SELECT lien FROM photos WHERE photos.id_film = evalTotal.id_film ORDER BY id_photo LIMIT 1) AS lien
-                FROM(
-                    SELECT  films.*, 
-                            AVG(escenario) AS escenario, 
-                            AVG(bande_sonore) AS bande_sonore, 
-                            AVG(effets_speciaux) AS effets_speciaux, 
-                            AVG(histoire) AS histoire, 
-                            AVG(originalite) AS originalite, 
-                            COUNT(films.id_film) AS nb_evaluations 
-                    FROM evaluations, films
-                    WHERE evaluations.id_film  = films.id_film 
-                    GROUP BY films.id_film
-                ) AS evalTotal
-                ORDER BY id_film
-
-
-SELECT *,((escenario + bande_sonore + effets_speciaux + histoire + originalite)/5) AS score,
-        (SELECT lien FROM photos WHERE photos.id_film = evalTotal.id_film ORDER BY id_photo LIMIT 1) AS lien,
-        (SELECT categories.categorie_nom FROM films_categories, categories 
-            WHERE films_categories.id_categorie = categories.id_categorie
-            AND films_categories.id_film = evalTotal.id_film 
-            LIMIT 1
-        ) AS categorie1,
-        (SELECT categories.categorie_nom FROM films_categories, categories 
-            WHERE films_categories.id_categorie = categories.id_categorie
-            AND films_categories.id_film = evalTotal.id_film  
-            LIMIT 1, 1
-        ) AS categorie2,
-        (SELECT categories.categorie_nom FROM films_categories, categories 
-            WHERE films_categories.id_categorie = categories.id_categorie
-            AND films_categories.id_film = evalTotal.id_film 
-            LIMIT 2, 2
-        ) AS categorie3                
-FROM(
-    SELECT  films.*, 
-            AVG(escenario) AS escenario, 
-            AVG(bande_sonore) AS bande_sonore, 
-            AVG(effets_speciaux) AS effets_speciaux, 
-            AVG(histoire) AS histoire, 
-            AVG(originalite) AS originalite, 
-            COUNT(films.id_film) AS nb_evaluations 
-    FROM evaluations, films
-    WHERE evaluations.id_film  = films.id_film 
-    GROUP BY films.id_film
-) AS evalTotal
-ORDER BY id_film
-
-
-SELECT *,((escenario + bande_sonore + effets_speciaux + histoire + originalite)/5) AS score,
                             (SELECT lien FROM photos WHERE photos.id_film = evalTotal.id_film ORDER BY id_photo LIMIT 1) AS lien,
                             (SELECT categories.categorie_nom FROM films_categories, categories 
                                 WHERE films_categories.id_categorie = categories.id_categorie
@@ -368,42 +301,30 @@ SELECT *,((escenario + bande_sonore + effets_speciaux + histoire + originalite)/
                             ) AS directeur2
 
         FROM(
-
-
-            SELECT id_film, film_nom, duration, date_sortie,
-                    SUM(description), SUM(escenario),  SUM(bande_sonore), 
-                    SUM(effets_speciaux), SUM(histoire), SUM(originalite), 
-                    nb_evaluations
-            FROM(
-                SELECT  films.*, 
-                        AVG(escenario) AS escenario, 
-                        AVG(bande_sonore) AS bande_sonore, 
-                        AVG(effets_speciaux) AS effets_speciaux, 
-                        AVG(histoire) AS histoire, 
-                        AVG(originalite) AS originalite, 
-                        COUNT(films.id_film) AS nb_evaluations 
-                FROM evaluations, films
-                WHERE evaluations.id_film  = films.id_film 
-                GROUP BY films.id_film
-                UNION
-                SELECT  films.*,
-                        0 AS escenario, 
-                        0 AS bande_sonore, 
-                        0 AS effets_speciaux, 
-                        0 AS histoire, 
-                        0 AS originalite, 
-                        0 AS nb_evaluations
-                FROM films
-                GROUP BY films.id_film
-            ) AS cardsB
+            SELECT  films.*, 
+                    AVG(escenario) AS escenario, 
+                    AVG(bande_sonore) AS bande_sonore, 
+                    AVG(effets_speciaux) AS effets_speciaux, 
+                    AVG(histoire) AS histoire, 
+                    AVG(originalite) AS originalite, 
+                    COUNT(films.id_film) AS nb_evaluations 
+            FROM evaluations, films
+            WHERE evaluations.id_film  = films.id_film 
             GROUP BY films.id_film
-                
-
-                   
-                
-
+            UNION
+            SELECT  films.*, 
+                    0 AS escenario, 
+                    0 AS bande_sonore, 
+                    0 AS effets_speciaux, 
+                   0 AS histoire, 
+                    0 AS originalite, 
+                    0 AS nb_evaluations 
+            FROM evaluations, films
+            WHERE films.id_film NOT IN (
+                    SELECT films.id_film 
+                    FROM evaluations, films 
+                    WHERE evaluations.id_film  = films.id_film
+                )
+            GROUP BY films.id_film
         ) AS evalTotal
         ORDER BY id_film
-
-         UNION
-    SELECT *, 0.0 As total, 0 As nb_evaluations FROM directeurs
