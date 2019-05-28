@@ -8,10 +8,10 @@ ce fichie n'a aucune utilité dans le code, je l'utilise uniquement pour faire d
 /* ajouter un nouveau film */
 INSERT INTO films(film_nom, duration, date_sortie, description)
 VALUES (
-    'EDMOND',
-    '01:53:00',
-    '2019-01-09',
-    "Décembre 1897, Paris. Edmond Rostand n’a pas encore trente ans mais déjà deux enfants et beaucoup d’angoisses. Il n’a rien écrit depuis deux ans."
+    "Bienvenue chez les Ch'tis",
+    '01:46:00',
+    '2008-02-27',
+    "L'histoire d'un homme originaire du sud de la France qui travaille à la Poste et se retrouve muté dans le Nord."
 
 )
 
@@ -26,39 +26,39 @@ VALUES (
 /*associer une categorie a un film*/
 REPLACE INTO films_categories(id_categorie, id_film)
 VALUES (
-    (SELECT id_categorie FROM categories WHERE categorie_nom = 'drame'),
-    2
+    (SELECT id_categorie FROM categories WHERE categorie_nom = 'comédie'),
+    6
 )
 
 /* ajouter un nouvelle artiste*/
 INSERT INTO artistes (artiste_nom, pay_origine, date_naissance)
 VALUES (
-    'MATHILDE SEIGNER',
+    'ZOÉ FÉLIX',
     'France',
-    '1968-01-17'
+    '1976-05-07'
 )
 
 /*associer un artiste a un film*/
 REPLACE INTO artistes_films (id_artiste, id_film)
 VALUES (
-    (SELECT id_artiste  FROM artistes WHERE artiste_nom = 'MATHILDE SEIGNER'),
-    2
+    (SELECT id_artiste  FROM artistes WHERE artiste_nom = 'KAD MERAD'),
+    6
 )
 
 /* ajouter un nouveau directeur*/
 INSERT INTO directeurs (directeur_nom, pay_origine, date_naissance, description)
 VALUES (
-    'ERIC TOLEDANO',
+    'DANY BOON',
     'France',
-    '1971-07-03',
-    "Lorsqu'il se lance dans le cinéma, en 1995, "
+    '1966-06-26',
+    " "
 )
 
 /*associer une directeur a un film*/
 REPLACE INTO directeurs_films (id_directeur, id_film)
 VALUES (
-    (SELECT id_directeur  FROM directeurs WHERE directeur_nom = 'ERIC TOLEDANO'),
-    1
+    (SELECT id_directeur  FROM directeurs WHERE directeur_nom = 'DANY BOON'),
+    6
 )
 
 /* ajouter une nouvelle evaluation pour un film*/
@@ -77,9 +77,9 @@ VALUES (
 /* ajouter une nouvelle photo pour un film*/
 INSERT INTO photos (id_film, photo_nom, lien)
 VALUES (
-    1,
-    'Intouchables',
-    'http://fr.web.img3.acsta.net/c_215_290/o_club300-overlay-ok.png_0_se/medias/nmedia/18/82/69/17/19806656.jpg'
+    5,
+    'BLANCHE NUIT',
+    'http://fr.web.img2.acsta.net/c_215_290/medias/nmedia/18/93/38/27/20511717.jpg'
 )
 
 /* eliminer un film*/
