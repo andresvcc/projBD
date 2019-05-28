@@ -8,57 +8,66 @@ ce fichie n'a aucune utilité dans le code, je l'utilise uniquement pour faire d
 /* ajouter un nouveau film */
 INSERT INTO films(film_nom, duration, date_sortie, description)
 VALUES (
-    "Bienvenue chez les Ch'tis",
-    '01:46:00',
-    '2008-02-27',
-    "L'histoire d'un homme originaire du sud de la France qui travaille à la Poste et se retrouve muté dans le Nord."
+    "Spider-Man: Far From Home",
+    '02:15:00',
+    '2019-07-03',
+    "L'araignée sympa du quartier décide de rejoindre ses meilleurs amis Ned, MJ, et le reste de la bande pour des vacances en Europe."
 
+)
+
+/* ajouter une nouvelle photo pour un film*/
+INSERT INTO photos (id_film, photo_nom, lien)
+VALUES (
+    20,
+    "Spider-Man 2",
+    'http://fr.web.img2.acsta.net/c_215_290/pictures/19/05/24/12/34/5876657.jpg'
 )
 
 
 /* ajouter un nouvelle categorie*/
 INSERT INTO categories(categorie_nom, description)
 VALUES (
-    "drame",
+    "science fiction",
     ""
 )
 
 /*associer une categorie a un film*/
 REPLACE INTO films_categories(id_categorie, id_film)
 VALUES (
-    (SELECT id_categorie FROM categories WHERE categorie_nom = 'comédie'),
-    6
+    (SELECT id_categorie FROM categories WHERE categorie_nom = 'action'),
+    20
 )
+
 
 /* ajouter un nouvelle artiste*/
 INSERT INTO artistes (artiste_nom, pay_origine, date_naissance)
 VALUES (
-    'ZOÉ FÉLIX',
-    'France',
-    '1976-05-07'
+    'JAKE GYLLENHAAL',
+    'EEUU',
+    '1980-12-19'
 )
 
 /*associer un artiste a un film*/
 REPLACE INTO artistes_films (id_artiste, id_film)
 VALUES (
-    (SELECT id_artiste  FROM artistes WHERE artiste_nom = 'KAD MERAD'),
-    6
+    (SELECT id_artiste  FROM artistes WHERE artiste_nom = 'JAKE GYLLENHAAL'),
+    20
 )
 
 /* ajouter un nouveau directeur*/
 INSERT INTO directeurs (directeur_nom, pay_origine, date_naissance, description)
 VALUES (
-    'DANY BOON',
-    'France',
-    '1966-06-26',
-    " "
+    'JON WATTS',
+    'EEUU',
+    '1981-06-28',
+    ""
 )
 
 /*associer une directeur a un film*/
 REPLACE INTO directeurs_films (id_directeur, id_film)
 VALUES (
-    (SELECT id_directeur  FROM directeurs WHERE directeur_nom = 'DANY BOON'),
-    6
+    (SELECT id_directeur  FROM directeurs WHERE directeur_nom = 'JON WATTS'),
+    20
 )
 
 /* ajouter une nouvelle evaluation pour un film*/
@@ -74,13 +83,7 @@ VALUES (
     5
 )
 
-/* ajouter une nouvelle photo pour un film*/
-INSERT INTO photos (id_film, photo_nom, lien)
-VALUES (
-    5,
-    'BLANCHE NUIT',
-    'http://fr.web.img2.acsta.net/c_215_290/medias/nmedia/18/93/38/27/20511717.jpg'
-)
+
 
 /* eliminer un film*/
 DELETE FROM films
