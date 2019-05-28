@@ -21,10 +21,10 @@ app.use(cors())
 upload.upload(app)
 
 let con = mysql.createConnection({
-  host: "remotemysql.com",
-  user: "lrF7zYviuF",
-  password: "jDNd9e3VtF",
-  database: "lrF7zYviuF"
+  host: "e7qyahb3d90mletd.chr7pe7iynqr.eu-west-1.rds.amazonaws.com",
+  user: "w4z6hpwz205mslib",
+  password: "zi0hoo36jiez1ka9",
+  database: "paxty0tyvoxo8co2"
 });
 
 con.connect((err)=>{ 
