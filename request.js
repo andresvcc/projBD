@@ -289,7 +289,7 @@ module.exports = Object.freeze({
                                         effets_speciaux, histoire, originalite )
                 VALUES (
                     ${data.id_film},
-                    '${data.opinion}',
+                    "${data.opinion}",
                     ${data.escenario},
                     ${data.bande_sonore},
                     ${data.effets_speciaux},
